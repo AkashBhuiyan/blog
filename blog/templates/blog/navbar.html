@@ -1,0 +1,23 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 techfont custom-navbar">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a></li>
+            <li><a href="{% url 'about' %}"> About</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'post_new' %}">New Post</a></li>&nbsp;
+                <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>&nbsp;
+                <li><a href="{% url 'logout' %}">Log Out</a></li>&nbsp;
+                <li><a> Welcome: {{ user.username }}</a></li>
+            {% else %}
+                <li>
+                    <a class="nav navbar-right" href="{% url 'login' %}">Log In</a>
+                </li>
+
+            {% endif %}
+        </ul>
+    </div>
+</nav>
